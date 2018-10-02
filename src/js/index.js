@@ -1,5 +1,4 @@
 import State from './Models/State';
-import { maxHandSize } from './rules';
 export const state = new State;
 window.state = state;
 

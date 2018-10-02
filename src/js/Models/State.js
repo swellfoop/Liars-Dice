@@ -1,4 +1,5 @@
 import Player from './Player';
+import CPU from './CPU';
 
 export default class State {
     constructor() {
@@ -10,8 +11,8 @@ export default class State {
     };
 
     start() {
-        this.players.push(new Player(1, 'Player 1', false));
-        this.players.push(new Player(2, 'Player 2', true));
+        this.players.push(new Player(1, 'Player 1'));
+        this.players.push(new CPU(2, 'Player 2'));
     };
 
     reset() {
