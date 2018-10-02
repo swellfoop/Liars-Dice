@@ -1,0 +1,18 @@
+###################
+## SWINDLESTONES ##
+###################
+Also known as Liar's Dice
+
+A two player game.
+
+Each player secretly rolls a set of dice. In SS, you roll five 4-sided dice each.
+Players then take it in turns to bet on how many of each die face is showing, having only their own set to go on.
+Betting works as follows:
+- You may only make a bet where the quantity or value of the bet has been raised
+- The quantity may rise and fall with each value, but the value may only rise
+-- ie. You may NOT raise a quan:3 val:4 bet to quan:4 val:1, but you may raise it to quan:1 bet:5
+Win condition:
+- One player says that they don't believe the other. If the accuser is right then they win the round. If the accuser is wrong then they lose the round.
+- This can also be forced when the bet becomes un-raisable ie. quan:10 val:4 for the first round
+- The round loser loses one die from their hand
+- Once a player is down to zero dice, the opposing player wins
