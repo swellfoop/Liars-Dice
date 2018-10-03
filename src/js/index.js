@@ -50,7 +50,8 @@ const gameControl = () => {
         };
         if (input === 'BET') {
             const bet = placeBet(player);
-            console.log(`Quantity: ${bet.quantity}; Value: ${bet.value}`);
+            alert(`${player.name} has made bet:\nQuantity: ${bet.quantity}; Value: ${bet.value}`)
+            //console.log(`Quantity: ${bet.quantity}; Value: ${bet.value}`);
         } else if (input === 'CHALLENGE') {
             alert(`${player.name} is issuing a challenge!`);
             state.roundResult = challenge(player);
@@ -77,12 +78,11 @@ const gameControl = () => {
             
         };
         console.log(state);
-        console.log(`${state.roundResult.winner.name} has won the round!\n
-            ${state.players.map(el => [el.name, el.handSize])}`);
+        alert(`${state.roundResult.winner.name} has won the round!\n${state.players.map(el => [el.name, el.handSize]).join(' ')}`);
         // state.gameConditionMet = true;
     };
     console.log(state);
-    console.log(`${state.roundResult.winner.name} has won the game!`);
+    alert(`${state.roundResult.winner.name} has won the game!`);
 };
 
 /*

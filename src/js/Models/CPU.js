@@ -50,7 +50,8 @@ export default class CPU extends Player {
     response() {
         // Challenge the bet if the opponent's bet is less likely than half of the maximum amount of dice being the same value
         const mostRecentBetIndex = getBetIndex(this.betProbabilities);
-        const probabilityOfBet = calculation.probabilityOfBet(this.betProbabilities[mostRecentBetIndex], this.rollData);
+        const probabilityOfBet = calculation.probabilityOfBet(this.betProbabilities[mostRecentBetIndex], this.rollData, this.handSize);
+        console.log(this.rollData);
         console.log(probabilityOfBet);
         if (probabilityOfBet < .5) {
             return 'CHALLENGE';

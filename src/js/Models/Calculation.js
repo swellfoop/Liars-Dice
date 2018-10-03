@@ -20,9 +20,9 @@ export const possibleBets = (playerID, rollData) => {
     return bets;
 };
 
-export const probabilityOfBet = (bet, rollData) => {
+export const probabilityOfBet = (bet, rollData, handSize) => {
     const diceInPlay = state.diceInPlay();
-    const prob = rollData[bet.value] >= bet.quantity ? 1 : probability(diceInPlay - rollData[bet.value], bet.quantity - rollData[bet.value], rules.maxDieValue);
+    const prob = rollData[bet.value] >= bet.quantity ? 1 : probability(diceInPlay - handSize, bet.quantity - rollData[bet.value], rules.maxDieValue);
     return prob;
 };
 
