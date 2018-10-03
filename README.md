@@ -1,1 +1,1 @@
-# swindlestones
+# Liar's Dice
