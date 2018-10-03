@@ -7,6 +7,7 @@ export default class Player {
         this.name = name;
         this.hand = [];
         this.handSize = rules.maxHandSize;
+        this.cpu = false;
     };
 
     rollDice() {
@@ -14,9 +15,23 @@ export default class Player {
         return this.hand;
     };
 
-    placeBet(quantity, value) {
-        const bet = new Bet(this.id, quantity, value);
-        if (bet.isLegal()) this.bet = bet;
+    placeBet() {
+        let quantity;
+        let value;
+        this.bet = {};
+        this.bet.legal = false;
+        while (!this.bet.legal) {
+            quantity = prompt(`
+                Your hand is ${this.hand}.\n
+                Write your QUANTITY.
+            `);
+            value = prompt(`
+                Your hand is ${this.hand}.\n
+                Write your VALUE.`
+            );
+            const bet = new Bet(this.id, quantity, value);
+            if (bet.isLegal()) this.bet = bet;
+        };        
         return this.bet;
     };
 

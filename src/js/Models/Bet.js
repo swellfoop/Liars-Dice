@@ -1,10 +1,11 @@
 import { state } from '../index';
 
 export default class Bet {
-    constructor(playerID, quantity, value) {
+    constructor(playerID, quantity, value, probability = 1) {
         this.playerID = playerID;
-        this.quantity = quantity;
-        this.value = value;
+        this.quantity = parseInt(quantity);
+        this.value = parseInt(value);
+        this.probability = probability;
     };
 
     isLegal() {

@@ -14,20 +14,7 @@ const newGame = () => {
 
 const gameControl = () => {
     const placeBet = player => {
-        let quantity;
-        let value;
-        player.bet = undefined;
-        while (!player.bet) {
-            quantity = prompt(`
-                Your hand is ${player.hand}.\n
-                Write your QUANTITY.
-            `);
-            value = prompt(`
-                Your hand is ${player.hand}.\n
-                Write your VALUE.`
-            );
-            player.placeBet(quantity, value);
-        };
+        player.placeBet();
         return player.bet;
     };
 
@@ -50,21 +37,29 @@ const gameControl = () => {
 
     const round = player => {
         state.roundConditionMet = false;
-        const input = prompt(`
+        let input;
+        if (!player.cpu) {
+            input = prompt(`
             Your hand is ${player.hand}.\n
             Type BET to place a bet.\n
             Type CHALLENGE to issue a challenge.\n
             Type EXIT to exit the app.
         `);
+        } else {
+            input = player.response();
+        };
         if (input === 'BET') {
-            placeBet(player);
+            const bet = placeBet(player);
+            console.log(`Quantity: ${bet.quantity}; Value: ${bet.value}`);
         } else if (input === 'CHALLENGE') {
+            alert(`${player.name} is issuing a challenge!`);
             state.roundResult = challenge(player);
             state.roundConditionMet = true;
         } else {
             state.roundConditionMet = true;
             state.gameConditionMet = true;
         };
+        console.log(input);
         return input;
     };
     

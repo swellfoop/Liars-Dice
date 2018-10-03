@@ -33,4 +33,14 @@ export default class State {
     rollDice() {
         this.players.forEach(el => el.rollDice());
     };
+
+    mostRecentBet() {
+        return this.bets.slice(-1)[0];
+    };
+
+    diceInPlay() {
+        let count = 0;
+        this.players.forEach(el => count += el.handSize);
+        return count;
+    };
 };
