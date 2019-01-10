@@ -1,4 +1,5 @@
 import { state } from '../index';
+import * as rules from '../rules';
 
 export default class Bet {
     constructor(playerID, quantity, value, probability = 1) {
@@ -15,7 +16,9 @@ export default class Bet {
         } else if (state.bets !== undefined) {
             state.bets.forEach(el => {
                 if (el.value > this.value ||
-                    (el.value === this.value && el.quantity >= this.quantity)) {
+                    (el.value === this.value && el.quantity >= this.quantity) ||
+                    (el.value > rules.maxDieValue) ||
+                    (el.quantity > state.diceInPlay())) {
                     legal = false;
                 };
             });
